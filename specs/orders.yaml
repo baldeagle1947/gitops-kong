@@ -7,6 +7,16 @@ info:
   description: 'Pizza ordering API Demo for KONG Training'
   contact:
     name: Kong
+x-kong-plugin-rate-limiting-advanced:
+        enabled: true
+        config:
+          limit:
+          - 3
+          window_size:
+          - 10
+          sync_rate: -1
+          strategy: cluster
+          window_type: sliding
 servers:
   - url: 'http://mockbin.org/request'
     description: mockbin
